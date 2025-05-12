@@ -4,7 +4,7 @@ export function useBooks() {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/book')
+        fetch(import.meta.env.VITE_BOOK_API_LINK)
             .then((res) => res.json())
             .then((data) => setBooks(data))
             .catch((err) => console.error('Failed to fetch books:', err));
@@ -12,7 +12,7 @@ export function useBooks() {
 
     const addBook = async (newBook) => {
         try {
-            const response = await fetch('http://localhost:3000/book', {
+            const response = await fetch(import.meta.env.VITE_BOOK_API_LINK, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -38,9 +38,12 @@ export function useBooks() {
 
     const deleteBook = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3000/book/${id}`, {
-                method: 'DELETE',
-            });
+            const response = await fetch(
+                `${import.meta.env.VITE_BOOK_API_LINK}/${id}`,
+                {
+                    method: 'DELETE',
+                },
+            );
 
             if (!response.ok) {
                 throw new Error('Failed to delete book');
@@ -57,4 +60,4 @@ export function useBooks() {
         books,
         addBook,
     };
-    };
+}
