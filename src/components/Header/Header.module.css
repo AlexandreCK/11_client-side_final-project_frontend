@@ -1,0 +1,13 @@
+.header {
+    font-size: var(--font-size-2xl);
+    text-align: center;
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xs);
+    color: var(--color-text-dark);
+}
+
+@media (prefers-color-scheme: light) {
+    .header {
+        color: var(--color-text-light);
+    }
+}
