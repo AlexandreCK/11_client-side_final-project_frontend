@@ -36,8 +36,25 @@ export function useBooks() {
         }
     };
 
+    const deleteBook = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:3000/book/${id}`, {
+                method: 'DELETE',
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to delete book');
+            }
+
+            setBooks(books.filter((book) => book.id !== id));
+        } catch (error) {
+            console.error('Error deleting book:', error);
+        }
+    };
+
     return {
+        deleteBook,
         books,
         addBook,
     };
-}
+    };

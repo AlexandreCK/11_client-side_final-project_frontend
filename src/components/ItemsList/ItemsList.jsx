@@ -1,12 +1,12 @@
-import styles from './ItemsList.module.css';
+// import styles from './ItemsList.module.css';
 import { ItemCard } from '../ItemCard/ItemCard';
 
-export const ItemsList = ({ itemsList }) => {
+export const ItemsList = ({ itemsList, deleteBook }) => {
     return (
-        <ul className={styles['items-list']}>
+        <ul>
             {itemsList.map((item) => (
-                <li key={item.id} className={styles['items-list__item']}>
-                    <ItemCard item={item} />
+                <li key={item.id}>
+                    <ItemCard item={item} deleteBook={deleteBook} />
                 </li>
             ))}
         </ul>

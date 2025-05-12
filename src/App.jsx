@@ -5,14 +5,14 @@ import { ItemsList } from './components/ItemsList/ItemsList';
 import { BookForm } from './components/BookForm/BookForm';
 
 function App() {
-    const { books, addBook } = useBooks();
+    const { books, addBook, deleteBook } = useBooks();
 
     return (
         <>
             <Header />
             <BookForm onAddBook={addBook} />
             <ListContainer>
-                <ItemsList itemsList={books} />
+                <ItemsList itemsList={books} deleteBook={deleteBook} />
             </ListContainer>
         </>
     );

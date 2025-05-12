@@ -1,37 +1,28 @@
-import styles from './ItemCard.module.css';
+// import styles from './ItemCard.module.css';
 
-export const ItemCard = ({ item }) => {
-    const titleStyles = {
-        read: styles['itemcard__title--done'],
-        'in progress': styles['itemcard__title--in-progress'],
-        pending: styles['itemcard__title--pending'],
-    };
+export const ItemCard = ({ item, deleteBook }) => {
+    // const titleStyles = {
+    //     read: styles['itemcard__title--done'],
+    //     'in progress': styles['itemcard__title--in-progress'],
+    //     pending: styles['itemcard__title--pending'],
+    // };
 
-    const statusStyles = {
-        read: styles['itemcard__status--done'],
-        'in progress': styles['itemcard__status--in-progress'],
-        pending: styles['itemcard__status--pending'],
-    };
-
-    const status = item.status.toLowerCase();
+    // const statusStyles = {
+    //     read: styles['itemcard__status--done'],
+    //     'in progress': styles['itemcard__status--in-progress'],
+    //     pending: styles['itemcard__status--pending'],
+    // };
 
     return (
-        <article className={styles.itemcard}>
-            <h4
-                className={`${styles.itemcard__title} ${titleStyles[status] || ''}`}
-            >
-                {item.title}
-            </h4>
-            <p className={styles.itemcard__description}>
+        <article>
+            <h4>{item.title}</h4>
+            <p>
                 <strong>Author:</strong> {item.author}
                 <br />
                 <strong>Year:</strong> {item.year}
             </p>
-            <span
-                className={`${styles.itemcard__status} ${statusStyles[status] || ''}`}
-            >
-                {item.status}
-            </span>
+            <span>{item.status}</span>
+            <button onClick={() => deleteBook(item.id)}>Delete</button>
         </article>
     );
 };
