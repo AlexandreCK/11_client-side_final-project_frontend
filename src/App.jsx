@@ -3,16 +3,48 @@ import { ListContainer } from './components/ListContainer/ListContainer';
 import { useBooks } from './hooks/useBooks';
 import { ItemsList } from './components/ItemsList/ItemsList';
 import { BookForm } from './components/BookForm/BookForm';
+import { useState } from 'react';
 
 function App() {
-    const { books, addBook, deleteBook } = useBooks();
+    const { books, addBook, deleteBook, updateBook, isLoading } = useBooks();
+    const [isFormVisible, setIsFormVisible] = useState(false);
+    const [isUpdate, setIsUpdate] = useState(false);
+    const [book, setBook] = useState(null);
+
+    const toggleFormVisibility = () => {
+        setIsFormVisible(!isFormVisible);
+        setIsUpdate(false);
+        setBook(null);
+    };
+
+    const setBookToUpdate = (book) => {
+        setIsFormVisible(true);
+        setIsUpdate(true);
+        setBook(book);
+    };
 
     return (
         <>
             <Header />
-            <BookForm onAddBook={addBook} />
+            <button onClick={toggleFormVisibility}>
+                {isFormVisible ? 'Cancel' : 'Add Book'}
+            </button>
+            {isFormVisible && (
+                <BookForm
+                    onAddBook={addBook}
+                    onUpdateBook={updateBook}
+                    isUpdate={isUpdate}
+                    book={book}
+                    toggleFormVisibility={toggleFormVisibility}
+                />
+            )}
             <ListContainer>
-                <ItemsList itemsList={books} deleteBook={deleteBook} />
+                <ItemsList
+                    itemsList={books}
+                    deleteBook={deleteBook}
+                    setBookToUpdate={setBookToUpdate}
+                    isLoading={isLoading}
+                />
             </ListContainer>
         </>
     );
