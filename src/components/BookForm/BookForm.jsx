@@ -34,9 +34,13 @@ export const BookForm = ({
     };
 
     return (
-        <form className={styles['task-form']} onSubmit={handleSubmit}>
+        <form className={styles['book-form']} onSubmit={handleSubmit}>
+            <h2 className={styles['book-form__title']}>
+                {isUpdate ? 'Update Book' : 'Add New Book'}
+            </h2>
+            
             <div className={styles['form-group']}>
-                <label htmlFor="title">Book Title</label>
+                <label htmlFor="title">Title</label>
                 <input
                     type="text"
                     id="title"
@@ -49,17 +53,18 @@ export const BookForm = ({
 
             <div className={styles['form-group']}>
                 <label htmlFor="author">Author</label>
-                <textarea
+                <input
+                    type="text"
                     id="author"
                     name="author"
-                    placeholder="Enter the book's author"
+                    placeholder="Enter author name"
                     required
                     defaultValue={book ? book.author : ''}
                 />
             </div>
 
             <div className={styles['form-group']}>
-                <label htmlFor="year">Year</label>
+                <label htmlFor="year">Publication Year</label>
                 <input
                     type="number"
                     id="year"
@@ -71,7 +76,7 @@ export const BookForm = ({
             </div>
 
             <div className={styles['form-group']}>
-                <label htmlFor="status">Status</label>
+                <label htmlFor="status">Reading Status</label>
                 <select
                     id="status"
                     name="status"

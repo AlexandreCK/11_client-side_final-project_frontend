@@ -4,6 +4,7 @@ import { useBooks } from './hooks/useBooks';
 import { ItemsList } from './components/ItemsList/ItemsList';
 import { BookForm } from './components/BookForm/BookForm';
 import { useState } from 'react';
+import styles from './App.module.css';
 
 function App() {
     const { books, addBook, deleteBook, updateBook, isLoading, isSaving } = useBooks();
@@ -24,20 +25,27 @@ function App() {
     };
 
     return (
-        <>
-            <Header />
-            <button onClick={toggleFormVisibility}>
-                {isFormVisible ? 'Cancel' : 'Add Book'}
-            </button>
+        <div className={styles['container']}>
+            <div className={styles['header-container']}>
+                <Header />
+                <button 
+                    className={`${styles['add-button']} ${isFormVisible ? styles['add-button--cancel'] : ''}`}
+                    onClick={toggleFormVisibility}
+                >
+                    {isFormVisible ? 'Cancel' : 'Add New Book'}
+                </button>
+            </div>
             {isFormVisible && (
-                <BookForm
-                    onAddBook={addBook}
-                    onUpdateBook={(updatedBook) => updateBook(updatedBook, toggleFormVisibility)}
-                    isUpdate={isUpdate}
-                    book={book}
-                    toggleFormVisibility={toggleFormVisibility}
-                    isSaving={isSaving}
-                />
+                <div style={{ position: 'relative' }}>
+                    <BookForm
+                        onAddBook={addBook}
+                        onUpdateBook={(updatedBook) => updateBook(updatedBook, toggleFormVisibility)}
+                        isUpdate={isUpdate}
+                        book={book}
+                        toggleFormVisibility={toggleFormVisibility}
+                        isSaving={isSaving}
+                    />
+                </div>
             )}
             <ListContainer>
                 <ItemsList
@@ -47,7 +55,7 @@ function App() {
                     isLoading={isLoading}
                 />
             </ListContainer>
-        </>
+        </div>
     );
 }
 

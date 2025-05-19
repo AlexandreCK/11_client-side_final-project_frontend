@@ -1,0 +1,58 @@
+@import './styles/globals.css';
+
+.container {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.add-button {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  cursor: pointer;
+  margin: var(--spacing-md) 0;
+  display: block;
+  width: 100%;
+  max-width: 12.5rem;
+  transition: background-color 0.2s;
+}
+
+.add-button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.add-button--cancel {
+  background-color: var(--color-gray-500);
+}
+
+.add-button--cancel:hover {
+  background-color: var(--color-gray-600);
+}
+
+@media (min-width: 48rem) {
+  .container {
+    padding: var(--spacing-lg);
+  }
+  
+  .header-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .add-button {
+    margin: 0;
+    width: auto;
+  }
+}

@@ -1,13 +1,16 @@
+@import '../../styles/globals.css';
+
 .header {
-    font-size: var(--font-size-2xl);
-    text-align: center;
-    margin-top: var(--space-md);
-    margin-bottom: var(--space-xs);
-    color: var(--color-text-dark);
+  font-size: var(--font-size-xxl);
+  color: var(--color-gray-900);
+  margin: var(--spacing-lg) 0;
+  text-align: center;
+  font-weight: 600;
 }
 
-@media (prefers-color-scheme: light) {
-    .header {
-        color: var(--color-text-light);
-    }
+@media (max-width: 576px) {
+  .header {
+    font-size: var(--font-size-xl);
+    margin: var(--spacing-md) 0;
+  }
 }
