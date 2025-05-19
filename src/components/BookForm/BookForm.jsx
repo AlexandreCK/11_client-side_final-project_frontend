@@ -5,7 +5,7 @@ export const BookForm = ({
     onUpdateBook,
     isUpdate,
     book,
-    toggleFormVisibility,
+    isSaving,
 }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -26,7 +26,6 @@ export const BookForm = ({
 
         if (isUpdate && book) {
             onUpdateBook({ ...book, ...bookData });
-            toggleFormVisibility();
         } else {
             onAddBook(bookData);
         }
@@ -84,8 +83,12 @@ export const BookForm = ({
                 </select>
             </div>
 
-            <button type="submit" className={styles['submit-btn']}>
-                {isUpdate ? 'Update Book' : 'Add Book'}
+            <button
+                type="submit"
+                className={styles['submit-btn']}
+                disabled={isSaving}
+            >
+                {isSaving ? 'Saving...' : isUpdate ? 'Update Book' : 'Add Book'}
             </button>
         </form>
     );

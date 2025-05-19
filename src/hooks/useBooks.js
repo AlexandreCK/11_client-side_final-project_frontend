@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 export function useBooks() {
     const [books, setBooks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isSaving, setIsSaving] = useState(false);
 
     useEffect(() => {
         fetch(import.meta.env.VITE_BOOK_API_LINK)
@@ -11,12 +12,13 @@ export function useBooks() {
                 setTimeout(() => {
                     setBooks(data);
                     data ? setIsLoading(false) : setIsLoading(true);
-                }, 5000),
+                }, 1000),
             )
             .catch((err) => console.error('Failed to fetch books:', err));
     }, []);
 
     const addBook = async (newBook) => {
+        setIsSaving(true);
         try {
             const response = await fetch(import.meta.env.VITE_BOOK_API_LINK, {
                 method: 'POST',
@@ -37,8 +39,11 @@ export function useBooks() {
 
             const addedBook = await response.json();
             setBooks([...books, addedBook]);
+            alert('Book added successfully!');
         } catch (error) {
             console.error('Error adding book:', error);
+        } finally {
+            setIsSaving(false);
         }
     };
 
@@ -61,7 +66,8 @@ export function useBooks() {
         }
     };
 
-    const updateBook = async (updatedBook) => {
+    const updateBook = async (updatedBook, onUpdateComplete) => {
+        setIsSaving(true);
         try {
             const response = await fetch(
                 `${import.meta.env.VITE_BOOK_API_LINK}/${updatedBook.id}`,
@@ -91,8 +97,13 @@ export function useBooks() {
                 ),
             );
             alert('Book updated successfully!');
+            if (onUpdateComplete) {
+                onUpdateComplete();
+            }
         } catch (error) {
             console.error('Error updating book:', error);
+        } finally {
+            setIsSaving(false);
         }
     };
 
@@ -102,5 +113,6 @@ export function useBooks() {
         addBook,
         updateBook,
         isLoading,
+        isSaving,
     };
 }

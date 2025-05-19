@@ -6,7 +6,7 @@ import { BookForm } from './components/BookForm/BookForm';
 import { useState } from 'react';
 
 function App() {
-    const { books, addBook, deleteBook, updateBook, isLoading } = useBooks();
+    const { books, addBook, deleteBook, updateBook, isLoading, isSaving } = useBooks();
     const [isFormVisible, setIsFormVisible] = useState(false);
     const [isUpdate, setIsUpdate] = useState(false);
     const [book, setBook] = useState(null);
@@ -32,10 +32,11 @@ function App() {
             {isFormVisible && (
                 <BookForm
                     onAddBook={addBook}
-                    onUpdateBook={updateBook}
+                    onUpdateBook={(updatedBook) => updateBook(updatedBook, toggleFormVisibility)}
                     isUpdate={isUpdate}
                     book={book}
                     toggleFormVisibility={toggleFormVisibility}
+                    isSaving={isSaving}
                 />
             )}
             <ListContainer>
