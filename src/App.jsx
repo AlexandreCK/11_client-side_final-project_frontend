@@ -36,7 +36,7 @@ function App() {
                 </button>
             </div>
             {isFormVisible && (
-                <div style={{ position: 'relative' }}>
+                <div>
                     <BookForm
                         onAddBook={addBook}
                         onUpdateBook={(updatedBook) => updateBook(updatedBook, toggleFormVisibility)}
