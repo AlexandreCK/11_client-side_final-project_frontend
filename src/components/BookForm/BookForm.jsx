@@ -47,31 +47,33 @@ export const BookForm = ({
                 />
             </div>
 
-            <div className={styles['form-group']}>
-                <label htmlFor="year">Publication Year</label>
-                <input
-                    type="number"
-                    id="year"
-                    name="year"
-                    placeholder="Enter year"
-                    required
-                    value={formData.year}
-                    onChange={handleChange}
-                />
-            </div>
+            <div className={styles['form-row']}>
+                <div className={styles['form-group']}>
+                    <label htmlFor="year">Publication Year</label>
+                    <input
+                        type="number"
+                        id="year"
+                        name="year"
+                        placeholder="Enter year"
+                        required
+                        value={formData.year}
+                        onChange={handleChange}
+                    />
+                </div>
 
-            <div className={styles['form-group']}>
-                <label htmlFor="status">Reading Status</label>
-                <select
-                    id="status"
-                    name="status"
-                    value={formData.status}
-                    onChange={handleChange}
-                >
-                    <option value="Pending">Pending</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Read">Read</option>
-                </select>
+                <div className={styles['form-group']}>
+                    <label htmlFor="status">Reading Status</label>
+                    <select
+                        id="status"
+                        name="status"
+                        value={formData.status}
+                        onChange={handleChange}
+                    >
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Read">Read</option>
+                    </select>
+                </div>
             </div>
 
             <button
