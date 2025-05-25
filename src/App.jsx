@@ -1,27 +1,28 @@
 import { Header } from './components/Header/Header';
 import { ListContainer } from './components/ListContainer/ListContainer';
 import { useBooks } from './hooks/useBooks';
+import { useUIState } from './hooks/useUIState';
 import { ItemsList } from './components/ItemsList/ItemsList';
 import { BookForm } from './components/BookForm/BookForm';
-import { useState } from 'react';
 import styles from './App.module.css';
 
 function App() {
     const { books, addBook, deleteBook, updateBook, isLoading, isSaving } = useBooks();
-    const [isFormVisible, setIsFormVisible] = useState(false);
-    const [isUpdate, setIsUpdate] = useState(false);
-    const [book, setBook] = useState(null);
+    const { 
+        isFormVisible, 
+        isUpdate, 
+        book, 
+        toggleFormVisibility, 
+        setBookToUpdate, 
+        closeForm 
+    } = useUIState();
 
-    const toggleFormVisibility = () => {
-        setIsFormVisible(!isFormVisible);
-        setIsUpdate(false);
-        setBook(null);
+    const handleAddBook = (newBook) => {
+        addBook(newBook, closeForm);
     };
 
-    const setBookToUpdate = (book) => {
-        setIsFormVisible(true);
-        setIsUpdate(true);
-        setBook(book);
+    const handleUpdateBook = (updatedBook) => {
+        updateBook(updatedBook, closeForm);
     };
 
     return (
@@ -38,11 +39,10 @@ function App() {
             {isFormVisible && (
                 <div>
                     <BookForm
-                        onAddBook={addBook}
-                        onUpdateBook={(updatedBook) => updateBook(updatedBook, toggleFormVisibility)}
+                        onAddBook={handleAddBook}
+                        onUpdateBook={handleUpdateBook}
                         isUpdate={isUpdate}
                         book={book}
-                        toggleFormVisibility={toggleFormVisibility}
                         isSaving={isSaving}
                     />
                 </div>

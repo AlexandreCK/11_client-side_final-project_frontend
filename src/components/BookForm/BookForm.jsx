@@ -1,4 +1,5 @@
 import styles from './BookForm.module.css';
+import { useBookForm } from '../../hooks/useBookForm';
 
 export const BookForm = ({
     onAddBook,
@@ -7,31 +8,12 @@ export const BookForm = ({
     book,
     isSaving,
 }) => {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const title = form.elements.title.value.trim();
-        const author = form.elements.author.value.trim();
-        const year = form.elements.year.value.trim();
-        const status = form.elements.status.value;
-
-        if (!title || !author) return;
-
-        const bookData = {
-            title,
-            author,
-            year,
-            status,
-        };
-
-        if (isUpdate && book) {
-            onUpdateBook({ ...book, ...bookData });
-        } else {
-            onAddBook(bookData);
-        }
-
-        form.reset();
-    };
+    const { formData, handleChange, handleSubmit } = useBookForm({
+        initialData: book,
+        onAddBook,
+        onUpdateBook,
+        isUpdate
+    });
 
     return (
         <form className={styles['book-form']} onSubmit={handleSubmit}>
@@ -47,7 +29,8 @@ export const BookForm = ({
                     name="title"
                     placeholder="Enter book title"
                     required
-                    defaultValue={book ? book.title : ''}
+                    value={formData.title}
+                    onChange={handleChange}
                 />
             </div>
 
@@ -59,7 +42,8 @@ export const BookForm = ({
                     name="author"
                     placeholder="Enter author name"
                     required
-                    defaultValue={book ? book.author : ''}
+                    value={formData.author}
+                    onChange={handleChange}
                 />
             </div>
 
@@ -71,7 +55,8 @@ export const BookForm = ({
                     name="year"
                     placeholder="Enter year"
                     required
-                    defaultValue={book ? book.year : ''}
+                    value={formData.year}
+                    onChange={handleChange}
                 />
             </div>
 
@@ -80,7 +65,8 @@ export const BookForm = ({
                 <select
                     id="status"
                     name="status"
-                    defaultValue={book ? book.status : 'Pending'}
+                    value={formData.status}
+                    onChange={handleChange}
                 >
                     <option value="Pending">Pending</option>
                     <option value="In Progress">In Progress</option>

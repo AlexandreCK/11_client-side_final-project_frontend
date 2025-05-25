@@ -8,16 +8,14 @@ export function useBooks() {
     useEffect(() => {
         fetch(import.meta.env.VITE_BOOK_API_LINK)
             .then((res) => res.json())
-            .then((data) =>
-                setTimeout(() => {
-                    setBooks(data);
-                    data ? setIsLoading(false) : setIsLoading(true);
-                }, 1000),
-            )
+            .then((data) => {
+                setBooks(data);
+                data ? setIsLoading(false) : setIsLoading(true);
+            })
             .catch((err) => console.error('Failed to fetch books:', err));
     }, []);
 
-    const addBook = async (newBook) => {
+    const addBook = async (newBook, onAddComplete) => {
         setIsSaving(true);
         try {
             const response = await fetch(import.meta.env.VITE_BOOK_API_LINK, {
@@ -25,12 +23,7 @@ export function useBooks() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    title: newBook.title,
-                    author: newBook.author,
-                    year: newBook.year,
-                    status: newBook.status,
-                }),
+                body: JSON.stringify(newBook),
             });
 
             if (!response.ok) {
@@ -40,6 +33,9 @@ export function useBooks() {
             const addedBook = await response.json();
             setBooks([...books, addedBook]);
             alert('Book added successfully!');
+            if (onAddComplete) {
+                onAddComplete();
+            }
         } catch (error) {
             console.error('Error adding book:', error);
         } finally {
@@ -76,12 +72,7 @@ export function useBooks() {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({
-                        title: updatedBook.title,
-                        author: updatedBook.author,
-                        year: updatedBook.year,
-                        status: updatedBook.status,
-                    }),
+                    body: JSON.stringify(updatedBook),
                 },
             );
 
