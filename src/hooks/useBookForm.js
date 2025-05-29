@@ -4,13 +4,13 @@ export function useBookForm({
     initialData,
     onAddBook,
     onUpdateBook,
-    isUpdate
+    isUpdate,
 }) {
     const [formData, setFormData] = useState({
         title: '',
         author: '',
-        year: '',
-        status: 'Pending'
+        year: new Date().getFullYear().toString(),
+        status: 'Pending',
     });
 
     useEffect(() => {
@@ -19,7 +19,7 @@ export function useBookForm({
                 title: initialData.title || '',
                 author: initialData.author || '',
                 year: initialData.year || '',
-                status: initialData.status || 'Pending'
+                status: initialData.status || 'Pending',
             });
         } else {
             resetForm();
@@ -28,9 +28,9 @@ export function useBookForm({
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prevData => ({
+        setFormData((prevData) => ({
             ...prevData,
-            [name]: value
+            [name]: value,
         }));
     };
 
@@ -45,7 +45,7 @@ export function useBookForm({
             title: formData.title.trim(),
             author: formData.author.trim(),
             year: formData.year.trim(),
-            status: formData.status
+            status: formData.status,
         };
 
         if (isUpdate && initialData) {
@@ -61,8 +61,8 @@ export function useBookForm({
         setFormData({
             title: '',
             author: '',
-            year: '',
-            status: 'Pending'
+            year: new Date().getFullYear().toString(),
+            status: 'Pending',
         });
     };
 
@@ -70,6 +70,6 @@ export function useBookForm({
         formData,
         handleChange,
         handleSubmit,
-        resetForm
+        resetForm,
     };
 }
