@@ -10,18 +10,18 @@ describe('ListContainer', () => {
 
     test('renders with correct CSS class', () => {
         const { container } = render(<ListContainer />);
-        
+
         const sectionElement = container.querySelector('section');
         expect(sectionElement.className).toBe(styles['list-container']);
     });
 
     test('renders children correctly', () => {
         const testContent = 'Test Child Content';
-        
+
         render(
             <ListContainer>
                 <div data-testid="test-child">{testContent}</div>
-            </ListContainer>
+            </ListContainer>,
         );
 
         const childElement = screen.getByTestId('test-child');
@@ -39,7 +39,7 @@ describe('ListContainer', () => {
                         {item}
                     </div>
                 ))}
-            </ListContainer>
+            </ListContainer>,
         );
 
         testItems.forEach((item, index) => {

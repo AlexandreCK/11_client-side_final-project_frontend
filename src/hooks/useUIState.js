@@ -32,6 +32,6 @@ export function useUIState() {
         book,
         toggleFormVisibility,
         setBookToUpdate,
-        closeForm
+        closeForm,
     };
 }

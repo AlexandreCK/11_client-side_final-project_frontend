@@ -9,11 +9,18 @@ export const ItemsList = ({
 }) => {
     return (
         <>
-            {isLoading && <p className={styles['items-list__loading']}>Loading Books...</p>}
+            {isLoading && (
+                <p className={styles['items-list__loading']}>
+                    Loading Books...
+                </p>
+            )}
             {!isLoading && (
                 <ul className={styles['items-list']}>
                     {itemsList.map((item) => (
-                        <li key={item.id} className={styles['items-list__item']}>
+                        <li
+                            key={item.id}
+                            className={styles['items-list__item']}
+                        >
                             <ItemCard
                                 item={item}
                                 deleteBook={deleteBook}
