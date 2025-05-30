@@ -7,14 +7,15 @@ import { BookForm } from './components/BookForm/BookForm';
 import styles from './App.module.css';
 
 function App() {
-    const { books, addBook, deleteBook, updateBook, isLoading, isSaving } = useBooks();
-    const { 
-        isFormVisible, 
-        isUpdate, 
-        book, 
-        toggleFormVisibility, 
-        setBookToUpdate, 
-        closeForm 
+    const { books, addBook, deleteBook, updateBook, isLoading, isSaving } =
+        useBooks();
+    const {
+        isFormVisible,
+        isUpdate,
+        book,
+        toggleFormVisibility,
+        setBookToUpdate,
+        closeForm,
     } = useUIState();
 
     const handleAddBook = (newBook) => {
@@ -29,7 +30,7 @@ function App() {
         <div className={styles['container']}>
             <div className={styles['header-container']}>
                 <Header />
-                <button 
+                <button
                     className={`${styles['add-button']} ${isFormVisible ? styles['add-button--cancel'] : ''}`}
                     onClick={toggleFormVisibility}
                 >
@@ -37,15 +38,13 @@ function App() {
                 </button>
             </div>
             {isFormVisible && (
-                <div>
-                    <BookForm
-                        onAddBook={handleAddBook}
-                        onUpdateBook={handleUpdateBook}
-                        isUpdate={isUpdate}
-                        book={book}
-                        isSaving={isSaving}
-                    />
-                </div>
+                <BookForm
+                    onAddBook={handleAddBook}
+                    onUpdateBook={handleUpdateBook}
+                    isUpdate={isUpdate}
+                    book={book}
+                    isSaving={isSaving}
+                />
             )}
             <ListContainer>
                 <ItemsList

@@ -1,119 +1,132 @@
 @import '../../styles/globals.css';
 
 .itemcard {
-  background-color: var(--color-white);
-  border-radius: var(--border-radius-md);
-  box-shadow: var(--box-shadow-sm);
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
+    background-color: var(--color-white);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-sm);
+    padding: 0;
+    margin-left: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
 .itemcard__header {
-  padding: var(--spacing-md);
-  border-bottom: 0.0625rem solid var(--color-gray-200);
+    padding: var(--spacing-md);
+    border-bottom: 0.0625rem solid var(--color-gray-200);
 }
 
 .itemcard__title {
-  font-size: var(--font-size-lg);
-  font-weight: 600;
-  margin: 0 0 var(--spacing-xs) 0;
-  color: var(--color-gray-900);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin: 0 0 var(--spacing-xs) 0;
+    color: var(--color-gray-900);
 }
 
 .itemcard__author {
-  font-size: var(--font-size-md);
-  color: var(--color-gray-700);
-  margin: 0;
+    font-size: var(--font-size-md);
+    color: var(--color-gray-700);
+    margin: 0;
 }
 
 .itemcard__year {
-  position: absolute;
-  top: var(--spacing-md);
-  right: var(--spacing-md);
-  background-color: var(--color-gray-200);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-sm);
-  color: var(--color-gray-700);
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background-color: var(--color-gray-200);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-700);
 }
 
 .itemcard__status-container {
-  padding: var(--spacing-md);
-  border-bottom: 0.0625rem solid var(--color-gray-200);
+    padding: var(--spacing-md);
+    border-bottom: 0.0625rem solid var(--color-gray-200);
 }
 
 .itemcard__status {
-  display: inline-block;
-  padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-sm);
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-sm);
 }
 
 .itemcard__status--read {
-  background-color: var(--status-read-bg);
-  color: var(--status-read-text);
+    background-color: var(--status-read-bg);
+    color: var(--status-read-text);
 }
 
 .itemcard__status--in-progress {
-  background-color: var(--status-in-progress-bg);
-  color: var(--status-in-progress-text);
+    background-color: var(--status-in-progress-bg);
+    color: var(--status-in-progress-text);
 }
 
 .itemcard__status--pending {
-  background-color: var(--status-pending-bg);
-  color: var(--status-pending-text);
+    background-color: var(--status-pending-bg);
+    color: var(--status-pending-text);
 }
 
 .itemcard__actions {
-  padding: var(--spacing-md);
-  display: flex;
-  justify-content: space-between;
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
 }
 
 .itemcard__button {
-  padding: var(--spacing-xs) var(--spacing-md);
-  border-radius: var(--border-radius-sm);
-  font-weight: 500;
-  transition: background-color 0.2s, color 0.2s;
-  min-width: 4.375rem;
-  text-align: center;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+    transition:
+        background-color 0.2s,
+        color 0.2s;
+    min-width: 4.375rem;
+    text-align: center;
 }
 
 .itemcard__button--edit {
-  background-color: var(--color-gray-200);
-  color: var(--color-gray-800);
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-800);
 }
 
 .itemcard__button--edit:hover {
-  background-color: var(--color-gray-300);
+    background-color: var(--color-gray-300);
 }
 
 .itemcard__button--delete {
-  background-color: var(--color-danger-light);
-  color: var(--color-danger);
+    background-color: var(--color-danger-light);
+    color: var(--color-danger);
 }
 
 .itemcard__button--delete:hover {
-  background-color: var(--color-danger);
-  color: var(--color-white);
+    background-color: var(--color-danger);
+    color: var(--color-white);
+}
+
+@media (max-width: 46rem) {
+    .itemcard {
+        margin-left: 0;
+    }
 }
 
 @media (max-width: 36rem) {
-  .itemcard__title {
-    font-size: var(--font-size-md);
-  }
-  
-  .itemcard__year {
-    font-size: var(--font-size-xs);
-    padding: calc(var(--spacing-xs) / 2) var(--spacing-xs);
-  }
-  
-  .itemcard__button {
-    padding: var(--spacing-xs) var(--spacing-sm);
-    font-size: var(--font-size-sm);
-  }
+    .itemcard {
+        margin-left: 0;
+    }
+
+    .itemcard__title {
+        font-size: var(--font-size-md);
+    }
+
+    .itemcard__year {
+        font-size: var(--font-size-xs);
+        padding: calc(var(--spacing-xs) / 2) var(--spacing-xs);
+    }
+
+    .itemcard__button {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: var(--font-size-sm);
+    }
 }
