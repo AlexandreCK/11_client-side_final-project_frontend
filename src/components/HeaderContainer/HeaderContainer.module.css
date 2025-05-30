@@ -1,0 +1,14 @@
+@import '../../styles/globals.css';
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+@media (min-width: 48rem) {
+    .header-container {
+        flex-direction: row;
+    }
+}

@@ -6,20 +6,8 @@
     padding: var(--spacing-md);
 }
 
-.header-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: var(--spacing-lg);
-}
-
 @media (min-width: 48rem) {
     .container {
         padding: var(--spacing-lg);
-    }
-
-    .header-container {
-        flex-direction: row;
-        justify-content: space-between;
     }
 }

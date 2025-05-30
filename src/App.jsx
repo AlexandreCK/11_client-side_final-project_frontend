@@ -5,6 +5,7 @@ import { useUIState } from './hooks/useUIState';
 import { ItemsList } from './components/ItemsList/ItemsList';
 import { BookForm } from './components/BookForm/BookForm';
 import { AddButton } from './components/AddButton/AddButton';
+import { HeaderContainer } from './components/HeaderContainer/HeaderContainer';
 import styles from './App.module.css';
 
 function App() {
@@ -29,13 +30,13 @@ function App() {
 
     return (
         <div className={styles['container']}>
-            <div className={styles['header-container']}>
+            <HeaderContainer>
                 <Header />
                 <AddButton
                     isFormVisible={isFormVisible}
                     onClick={toggleFormVisibility}
                 />
-            </div>
+            </HeaderContainer>
             {isFormVisible && (
                 <BookForm
                     onAddBook={handleAddBook}
