@@ -6,7 +6,7 @@ import { ItemsList } from './components/ItemsList/ItemsList';
 import { BookForm } from './components/BookForm/BookForm';
 import { AddButton } from './components/AddButton/AddButton';
 import { HeaderContainer } from './components/HeaderContainer/HeaderContainer';
-import styles from './App.module.css';
+import { MainContainer } from './components/MainContainer/MainContainer';
 
 function App() {
     const { books, addBook, deleteBook, updateBook, isLoading, isSaving } =
@@ -29,7 +29,7 @@ function App() {
     };
 
     return (
-        <div className={styles['container']}>
+        <MainContainer>
             <HeaderContainer>
                 <Header />
                 <AddButton
@@ -54,7 +54,7 @@ function App() {
                     isLoading={isLoading}
                 />
             </ListContainer>
-        </div>
+        </MainContainer>
     );
 }
 

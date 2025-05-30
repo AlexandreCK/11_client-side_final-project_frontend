@@ -1,0 +1,13 @@
+@import '../../styles/globals.css';
+
+.main-container {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+@media (min-width: 48rem) {
+    .main-container {
+        padding: var(--spacing-lg);
+    }
+}
