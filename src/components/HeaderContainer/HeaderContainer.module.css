@@ -5,10 +5,13 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-lg);
 }
 
 @media (min-width: 48rem) {
     .header-container {
         flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
 }

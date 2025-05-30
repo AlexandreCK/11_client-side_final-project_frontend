@@ -21,18 +21,20 @@ export const ItemCard = ({ item, deleteBook, setBookToUpdate }) => {
             </div>
             <span className={styles['itemcard__year']}>{item.year}</span>
             <div className={styles['itemcard__status-container']}>
-                <span className={`${styles['itemcard__status']} ${statusStyles[item.status]}`}>
+                <span
+                    className={`${styles['itemcard__status']} ${statusStyles[item.status]}`}
+                >
                     {item.status}
                 </span>
             </div>
             <div className={styles['itemcard__actions']}>
-                <button 
+                <button
                     className={`${styles['itemcard__button']} ${styles['itemcard__button--edit']}`}
                     onClick={() => setBookToUpdate(item)}
                 >
                     Edit
                 </button>
-                <button 
+                <button
                     className={`${styles['itemcard__button']} ${styles['itemcard__button--delete']}`}
                     onClick={deleteAlert}
                 >

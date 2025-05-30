@@ -40,26 +40,26 @@
 
 .form-group input,
 .form-group textarea {
-  width: 100%;
-  padding: var(--spacing-md);
-  border: 0.0625rem solid var(--color-gray-300);
-  border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-md);
-  color: var(--color-gray-900);
-  background-color: var(--color-white);
-  height: 2.75rem;
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 0.0625rem solid var(--color-gray-300);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-md);
+    color: var(--color-gray-900);
+    background-color: var(--color-white);
+    height: 2.75rem;
 }
 
 .form-group select {
-  width: 100%;
-  padding: 0 var(--spacing-md);
-  border: 0.0625rem solid var(--color-gray-300);
-  border-radius: var(--border-radius-sm);
-  font-size: var(--font-size-md);
-  color: var(--color-gray-900);
-  background-color: var(--color-white);
-  height: 2.75rem;
-  line-height: 2.75rem;
+    width: 100%;
+    padding: 0 var(--spacing-md);
+    border: 0.0625rem solid var(--color-gray-300);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-md);
+    color: var(--color-gray-900);
+    background-color: var(--color-white);
+    height: 2.75rem;
+    line-height: 2.75rem;
 }
 
 .form-group input[type='number']::-webkit-inner-spin-button,
@@ -119,7 +119,7 @@
         flex-direction: row;
         gap: var(--spacing-lg);
     }
-    
+
     .form-row .form-group {
         flex: 1;
         margin-bottom: 0;

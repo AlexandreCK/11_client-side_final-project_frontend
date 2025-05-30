@@ -12,7 +12,7 @@ export const BookForm = ({
         initialData: book,
         onAddBook,
         onUpdateBook,
-        isUpdate
+        isUpdate,
     });
 
     return (
@@ -20,7 +20,7 @@ export const BookForm = ({
             <h2 className={styles['book-form__title']}>
                 {isUpdate ? 'Update Book' : 'Add New Book'}
             </h2>
-            
+
             <div className={styles['form-group']}>
                 <label htmlFor="title">Title</label>
                 <input
