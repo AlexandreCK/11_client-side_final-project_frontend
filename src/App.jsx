@@ -4,6 +4,7 @@ import { useBooks } from './hooks/useBooks';
 import { useUIState } from './hooks/useUIState';
 import { ItemsList } from './components/ItemsList/ItemsList';
 import { BookForm } from './components/BookForm/BookForm';
+import { AddButton } from './components/AddButton/AddButton';
 import styles from './App.module.css';
 
 function App() {
@@ -30,12 +31,10 @@ function App() {
         <div className={styles['container']}>
             <div className={styles['header-container']}>
                 <Header />
-                <button
-                    className={`${styles['add-button']} ${isFormVisible ? styles['add-button--cancel'] : ''}`}
+                <AddButton
+                    isFormVisible={isFormVisible}
                     onClick={toggleFormVisibility}
-                >
-                    {isFormVisible ? 'Cancel' : 'Add New Book'}
-                </button>
+                />
             </div>
             {isFormVisible && (
                 <BookForm
